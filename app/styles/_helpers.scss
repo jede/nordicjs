@@ -1,6 +1,9 @@
 @import "compass";
 
 
+$soft-black: hsl(0,0,20%);
+
+
 $content-width-large: 620px;
 
 @mixin input-placeholder {
