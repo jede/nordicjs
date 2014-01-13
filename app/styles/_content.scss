@@ -32,6 +32,7 @@ body {
   /*height: 918px;*/
 
   height: 95%;
+  min-height: 620px;
   background-image: url(/images/header-bg.jpg);
   background-position: center bottom;
   /*background-size: cover;*/
@@ -79,5 +80,23 @@ body {
 
   .header-form-info {
     @include font-size(15);
+  }
+}
+
+.location-section {
+  @extend .section;
+  .location-preview-list {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @for $i from 1 through 6 {
+    .location-preview-#{$i} {
+      float: left;
+      width: (100%/6);
+      height: 160px;
+      background-image: url(/images/location-preview-#{$i}.jpg);
+    }
   }
 }
