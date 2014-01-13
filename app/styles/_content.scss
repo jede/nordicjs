@@ -1,0 +1,83 @@
+html, body {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html, input {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  @include font-size();
+}
+
+.content {
+  width: $content-width-large;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.section {
+
+}
+
+.header-section {
+  @extend .section;
+  /*height: 918px;*/
+
+  height: 95%;
+  background-image: url(/images/header-bg.jpg);
+  background-position: center bottom;
+  /*background-size: cover;*/
+
+  color: white;
+  text-align: center;
+  position: relative;
+
+  .header-content {
+    @extend .content;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -$content-width-large/2;
+  }
+
+  .header-heading {
+    @include font-weight(bold);
+    @include font-size(110);
+    letter-spacing: -3px;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+  }
+  .header-separator {
+    width: 45px;
+    height: 4px;
+    outline: none;
+    border: none;
+    background-color: white;
+  }
+  .header-subheading {
+    @include font-size();
+
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .header-intro {
+    line-height: 1.3;
+    margin-top: 3em;
+    margin-bottom: 2em;
+  }
+
+  .header-form-info {
+    @include font-size(15);
+  }
+}
