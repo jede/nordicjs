@@ -184,3 +184,38 @@ body {
   }
 
 }
+
+.footer-section {
+  background-color: $soft-black;
+  color: white;
+  text-align: center;
+  padding-bottom: 150px;
+
+  .email-field {
+    margin-right: 10px;
+  }
+
+  .footer-social {
+    left: -30px;
+    margin-top: 60px;
+    position: relative;
+    list-style: none;
+    li {
+      float: left;
+      width: 33%;
+      @include font-weight(black);
+      @include font-size(20);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @each $media in (twitter, facebook, instagram) {
+      .icon-#{$media}:before {
+        @include icon($media);
+        font-size: 35px;
+        vertical-align: -2px;
+      }
+    }
+  }
+
+}
