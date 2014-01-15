@@ -2,6 +2,7 @@
 
 
 $soft-black: hsl(0,0,20%);
+$font-path: 'fonts';
 
 
 $content-width-large: 620px;
@@ -42,3 +43,15 @@ $content-width-large: 620px;
 }
 
 
+@mixin icon($name) {
+
+  $glyph: "\F32D"; //Instagram
+  @if $name == twitter {
+    $glyph: "\F309"; 
+  } @else if $name == facebook {
+    $glyph: "\F30C"; 
+  }
+
+  font-family: "EntypoSocial";
+  content: $glyph;
+}
