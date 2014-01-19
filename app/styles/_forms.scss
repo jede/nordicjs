@@ -7,6 +7,7 @@ $form-element-height: 45px;
 }
 .button {
   @extend %form-element;
+  display: inline-block;
   border: none;
   line-height: $form-element-height;
   padding: 0 30px;
