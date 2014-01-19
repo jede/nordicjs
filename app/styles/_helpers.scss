@@ -7,6 +7,16 @@ $link-color-light: #78C0FF;
 $font-path: '../fonts';
 
 
+$break-medium: 650px;
+$break-semi-large: 1200px;
+$break-large: 1550px;
+$break-extra-large: 1700px;
+
+$break-tall: 960px;
+$break-medium-tall: 680px;
+
+
+
 $content-width-large: 620px;
 
 @mixin input-placeholder {
@@ -57,3 +67,26 @@ $content-width-large: 620px;
   font-family: "EntypoSocial";
   content: $glyph;
 }
+
+
+@mixin screens($type) {
+  @if($type == medium) {
+    @media only screen and (min-width: $break-medium) { @content; }
+  }
+  @if($type == semi-large) {
+    @media only screen and (min-width: $break-semi-large) { @content; }
+  }
+  @if($type == large) {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+  @if($type == extra-large) {
+    @media only screen and (min-width: $break-extra-large) { @content; }
+  }
+  @if($type == medium-tall){
+    @media only screen and (min-height: $break-medium-tall) { @content; }
+  }
+  @if($type == tall) {
+    @media only screen and (min-height: $break-tall) { @content; }
+  }
+}
+

@@ -24,6 +24,10 @@ a {
   @include font-weight(semi);
 }
 
+.fa {
+  margin-right:5px;
+  font-size:120%;
+}
 
 %fancy-links {
 
@@ -72,14 +76,33 @@ a {
 }
 
 .content {
-  width: $content-width-large;
+  max-width: $content-width-large + 2*20px;
   margin: 0 auto;
-  padding: 90px 0;
+  padding: 90px 20px;
+
+  @include screens(semi-large) {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
+  @include screens(large) {
+    padding-bottom: 160px;
+  }
 
   .content-separator {
     @extend .separator;
     margin: 60px auto;
-    
+  }
+
+  &.fade-in-on-scroll {
+    @include transition(all 0.5s ease-out);
+    opacity: 1;
+    @include transform(translateY(0px));
+
+    &.fade-out {
+      opacity: 0;
+      @include transform(translateY(50px));
+    }
   }
 }
 
@@ -102,9 +125,8 @@ a {
   @extend .section;
   /*height: 918px;*/
 
-  height: 95%;
+  height: 90%;
   min-height: 620px;
-  max-height: 1100px;
   background-image: url(/images/header-bg.jpg);
   background-position: center bottom;
   
@@ -173,20 +195,30 @@ a {
     padding: 0;
     list-style: none;
   }
+
   @for $i from 1 through 6 {
     .location-preview-#{$i} {
       float: left;
-      width: (100%/6);
       height: 160px;
       background-image: url(/images/location-preview-#{$i}.jpg);
       background-size: cover;
       background-position: center center;
+      @if $i == 1 or $i == 6 {
+        display: none;
+      }
+      width: (100%/4);
+      @include screens(semi-large) {
+        width: (100%/6);
+        display: block;
+      }
+      @include screens(extra-large) {
+        height: 220px;
+      }
     }
   }
 
   .location-content {
     @extend .content;
-    padding: 100px 0;
     margin-bottom: 30px;
   }
 }
@@ -201,12 +233,11 @@ a {
 
   .proposals-content {
     @extend .content;
-    padding: 90px 0;
   }
 
   .proposals-paragraph {
     @extend .paragraph;
-    width: 460px;
+    max-width: 460px;
     margin-bottom: 50px;
   }
 }
@@ -309,7 +340,7 @@ a {
 
   .sponsor-paragraph {
     @extend .paragraph;
-    width: 460px;
+    max-width: 460px;
     margin-bottom: 50px;
   }
 
