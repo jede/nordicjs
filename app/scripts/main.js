@@ -8,7 +8,7 @@ $(function(){
   });
 
   $(document).scroll(function(){
-    var bottom = $(document).scrollTop() + $(window).height() * 0.9;
+    var bottom = $(document).scrollTop() + $(window).height() * 0.85;
     $fadeIn.each(function(i, elem){
       if(bottom > $(elem).position().top) {
         $(elem).removeClass('fade-out');

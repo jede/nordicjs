@@ -29,13 +29,14 @@ a {
   font-size:120%;
 }
 
-%fancy-links {
+@mixin fancy-links($color: $link-color) {
 
   a {
     position: relative;
     display: inline-block;
     outline: none;
     padding: 0 0 10px;
+    color: $color;
   }
 
   a::after {
@@ -47,7 +48,7 @@ a {
     left: 0;
     width: 100%;
     height: 2px;
-    background: $link-color;
+    background: $color;
     content: '';
     opacity: 0;
     @include transition(all .3s);
@@ -76,10 +77,12 @@ a {
 }
 
 .content {
-  max-width: $content-width-large + 2*20px;
   margin: 0 auto;
   padding: 90px 20px;
 
+  @include screens(medium) {
+    max-width: $content-width-large + 2*20px;
+  }
   @include screens(semi-large) {
     padding-left: 120px;
     padding-right: 120px;
@@ -95,7 +98,7 @@ a {
   }
 
   &.fade-in-on-scroll {
-    @include transition(all 0.5s ease-out);
+    @include transition(all 0.7s ease-out 0.1s);
     opacity: 1;
     @include transform(translateY(0px));
 
@@ -144,8 +147,12 @@ a {
     padding: 30px 0;
     position: absolute;
     bottom: 0px;
-    left: 50%;
-    margin-left: -$content-width-large/2;
+    left: 0;
+    right: 0;
+    @include screens(medium) {
+      left: 50%;
+      margin-left: -$content-width-large/2;
+    }
   }
 
   .header-heading {
@@ -157,11 +164,13 @@ a {
     padding: 0;
     line-height: 1;
   }
+
   .header-separator {
     @extend .separator;
     height: 4px;
     background-color: white;
   }
+
   .header-subheading {
     @include font-size();
 
@@ -255,7 +264,7 @@ a {
   }
 
   .team {
-    @extend %fancy-links;
+    @include fancy-links();
 
     .member {
       margin-bottom:70px;
@@ -332,11 +341,8 @@ a {
   color: white;
   min-height: 600px;
 
-  @extend %fancy-links;
+  @include fancy-links($link-color-light);
 
-  a {
-    color: $link-color-light;
-  }
 
   .sponsor-paragraph {
     @extend .paragraph;
@@ -350,7 +356,7 @@ a {
   background-color: $soft-black;
   color: white;
   text-align: center;
-  padding-bottom: 150px;
+  padding-bottom: 100px;
 
   .email-field {
     margin-right: 10px;
@@ -358,16 +364,22 @@ a {
 
   .footer-social {
     left: -30px;
-    margin-top: 60px;
+    margin-top: 30px;
     position: relative;
     list-style: none;
     li {
-      float: left;
-      width: 33%;
-      @include font-weight(black);
-      @include font-size(20);
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      margin: 15px 0;
+      @include screens(semi-large) {
+        float: left;
+        width: 33%;
+      }
+      @include fancy-links(white);
+      a {
+        @include font-weight(black);
+        @include font-size(20);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
     }
 
     @each $media in (twitter, facebook, instagram) {
