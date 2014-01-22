@@ -1,0 +1,1 @@
+"use strict";$(function(){var a=$(".fade-in-on-scroll");a.each(function(a,b){$(b).addClass("fade-out")}),$(document).scroll(function(){var b=$(document).scrollTop()+.85*$(window).height();a.each(function(a,c){b>$(c).position().top&&$(c).removeClass("fade-out")})})});
