@@ -4,13 +4,13 @@ $form-element-height: 45px;
 %form-element {
   vertical-align: bottom;
   outline: none;
+  padding: 0 20px;
 }
 .button {
   @extend %form-element;
   display: inline-block;
   border: none;
   line-height: $form-element-height;
-  padding: 0 30px;
 
   background-color: white;
   color: hsl(0,0,25%);
@@ -19,15 +19,24 @@ $form-element-height: 45px;
   @include font-weight(black);
   text-transform: uppercase;
   letter-spacing: 2px;
+
+  @include screens(medium){
+    padding: 0 30px;
+  }
 }
 
 .email-field {
   @extend %form-element;
-  padding: 0 20px;
   border: 2px solid white;
   line-height: $form-element-height - 2 * 2px;
   background-color: transparent;
   color: white;
+
+  width: 120px;
+  @include screens(medium){
+    width: 180px;
+  }
+
   @include input-placeholder {
     color: rgba(white, .75);
     @include font-size(15);

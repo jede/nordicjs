@@ -6,7 +6,9 @@ html, body {
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 50%;
+  @include screens(medium){ font-size: 62.5%; }
+  @include screens(extra-large){ font-size: 75%; }
 }
 
 html, input {
@@ -30,7 +32,6 @@ a {
 }
 
 @mixin fancy-links($color: $link-color) {
-
   a {
     position: relative;
     display: inline-block;
@@ -63,8 +64,6 @@ a {
     -moz-transform: translateY(-3px);
     transform: translateY(-3px);
   }
-
-
 }
 
 
@@ -78,17 +77,20 @@ a {
 
 .content {
   margin: 0 auto;
-  padding: 90px 20px;
+  padding: 60px 20px;
 
   @include screens(medium) {
-    max-width: $content-width-large + 2*20px;
+    padding-top: 90px;
+    padding-bottom: 90px;
+    max-width: $content-width + 2*20px;
   }
   @include screens(semi-large) {
-    padding-left: 120px;
-    padding-right: 120px;
+    padding-top: 120px;
+    padding-bottom: 120px;
   }
 
-  @include screens(large) {
+  @include screens(extra-large) {
+    max-width: $content-width-extra-large + 2*20px;
     padding-bottom: 160px;
   }
 
@@ -118,6 +120,7 @@ a {
   @include font-size(25);
   letter-spacing: 3px;
   text-transform: uppercase;
+  margin: 1.3em 0;
 }
 
 .paragraph {
@@ -135,7 +138,7 @@ a {
   
   @media screen and (min-width: image-width('/header-bg.jpg')), screen and (min-height: image-height('/header-bg.jpg')) {
     background-size: cover;
-    background-position: center 40%;
+    background-position: center 50%;
   }
 
   color: white;
@@ -144,25 +147,33 @@ a {
 
   .header-content {
     @extend .content;
-    padding: 30px 0;
+    padding: 30px 10px;
     position: absolute;
     bottom: 0px;
     left: 0;
     right: 0;
     @include screens(medium) {
       left: 50%;
-      margin-left: -$content-width-large/2;
+      margin-left: -$content-width/2;
     }
+    @include screens(extra-large) {
+      margin-left: -$content-width-extra-large/2;
+    }
+    
   }
 
   .header-heading {
     @include font-weight(bold);
-    @include font-size(110);
     letter-spacing: -3px;
     color: inherit;
     margin: 0;
     padding: 0;
     line-height: 1;
+    @include font-size(100);
+
+    @include screens(medium) {
+      @include font-size(110);
+    }
   }
 
   .header-separator {
@@ -180,8 +191,8 @@ a {
 
   .header-intro {
     @extend .paragraph;
-    margin-top: 3em;
-    margin-bottom: 2em;
+    margin-top: 2.8em;
+    margin-bottom: 1.8em;
   }
 
   .header-form-info {
@@ -208,7 +219,7 @@ a {
   @for $i from 1 through 6 {
     .location-preview-#{$i} {
       float: left;
-      height: 160px;
+      height: 80px;
       background-image: url(/images/location-preview-#{$i}.jpg);
       background-size: cover;
       background-position: center center;
@@ -216,7 +227,11 @@ a {
         display: none;
       }
       width: (100%/4);
+      @include screens(medium) {
+        height: 120px;
+      }
       @include screens(semi-large) {
+        height: 160px;
         width: (100%/6);
         display: block;
       }
@@ -263,15 +278,28 @@ a {
     @extend .paragraph;
   }
 
+
   .team {
     @include fancy-links();
 
+    text-align: center;
+    @include screens(medium){
+      text-align: left;
+    }
     .member {
-      margin-bottom:70px;
+      margin-bottom:40px;
+      @include screens(medium){
+        margin-bottom:70px;
+      }
     }
     .member-image {
-      float:left;
       position: relative;
+      display: inline-block;
+      margin-bottom: 10px;
+      @include screens(medium){
+        float: left;
+        margin-bottom: 0;
+      }
       height:140px;
       width:140px;
       .member-image-front {
@@ -311,11 +339,16 @@ a {
       }
     }
     .member-info {
-      padding-left:170px;
+      @include screens(medium) {
+        padding-left:170px;
+      }
     }
     .member-links a {
       display:inline-block;
-      margin-right:20px;
+      margin-left: 1em;
+      &:first-child {
+        margin-left: 0;
+      }
     }
     h3 {
       text-transform: uppercase;
@@ -356,10 +389,16 @@ a {
   background-color: $soft-black;
   color: white;
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
+
+  .footer-content {
+    @extend .content;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
   .email-field {
-    margin-right: 10px;
+    margin-right: .5em;
   }
 
   .footer-social {

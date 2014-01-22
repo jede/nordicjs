@@ -17,7 +17,8 @@ $break-medium-tall: 680px;
 
 
 
-$content-width-large: 620px;
+$content-width: 620px;
+$content-width-extra-large: 780px;
 
 @mixin input-placeholder {
   @if $experimental-support-for-webkit {
