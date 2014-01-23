@@ -147,6 +147,14 @@ a {
 
   .header-content {
     @extend .content;
+    opacity: 1;
+    @include transition(all 0.7s ease-out 0.1s);
+
+
+    &.fade-out {
+      opacity: 0;
+    }
+
     padding: 30px 10px;
     position: absolute;
     bottom: 0px;

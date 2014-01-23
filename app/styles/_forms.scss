@@ -5,7 +5,12 @@ $form-element-height: 45px;
   vertical-align: bottom;
   outline: none;
   padding: 0 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  @include border-radius(0);
+  @include box-shadow(none);
 }
+
 .button {
   @extend %form-element;
   display: inline-block;
