@@ -16,9 +16,10 @@ $(function(){
     var height = $(window).height();
     var scrollTop = $(document).scrollTop();
     var bottom = scrollTop + height * 0.85;
-    var headerTop = $('.header-content').position().top;
+    var $headerContent = $('.header-content');
+    var headerBottom = $headerContent.position().top + $headerContent.height() * 0.75;
 
-    $('.header-content').toggleClass('fade-out', headerTop < scrollTop - height * 0.2);
+    $headerContent.toggleClass('fade-out', headerBottom < scrollTop);
 
     $fadeIn.each(function(i, elem){
       if(bottom > $(elem).position().top) {
