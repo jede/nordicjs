@@ -20,6 +20,8 @@ $break-medium-tall: 680px;
 $content-width: 620px;
 $content-width-extra-large: 780px;
 
+$experimental-support-for-mozilla: true;
+
 @mixin input-placeholder {
   @if $experimental-support-for-webkit {
     &::-webkit-input-placeholder {
@@ -27,6 +29,9 @@ $content-width-extra-large: 780px;
     }
   }
   @if $experimental-support-for-mozilla {
+    &::-moz-placeholder {
+      @content;
+    }
     &:-moz-placeholder {
       @content;
     }

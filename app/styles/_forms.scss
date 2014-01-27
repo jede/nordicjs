@@ -16,11 +16,12 @@ $form-element-height: 45px;
   display: inline-block;
   border: none;
   line-height: $form-element-height;
+  height: $form-element-height;
 
   background-color: white;
   color: hsl(0,0,25%);
 
-  @include font-size(15);
+  @include font-size(14);
   @include font-weight(black);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -32,10 +33,12 @@ $form-element-height: 45px;
 
 .email-field {
   @extend %form-element;
-  border: 2px solid white;
-  line-height: $form-element-height - 2 * 2px;
+  $border-width: 2px;
+  border: $border-width solid white;
   background-color: transparent;
   color: white;
+  line-height: $form-element-height - 2 * $border-width;
+  height: $form-element-height - 2 * $border-width;
 
   width: 120px;
   @include screens(medium){
@@ -44,7 +47,7 @@ $form-element-height: 45px;
 
   @include input-placeholder {
     color: rgba(white, .75);
-    @include font-size(15);
+    @include font-size(14);
     @include font-weight(black);
     text-transform: uppercase;
     letter-spacing: 2px;
